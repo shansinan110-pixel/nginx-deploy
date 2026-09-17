@@ -1,0 +1,300 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>DriveGo - Car Rental</title>
+</head>
+
+<body style="margin:0; font-family:Arial, sans-serif; background:#f5f7fa; color:#222;">
+
+    <!-- NAVBAR -->
+    <nav style="background:#111827; padding:18px 7%; display:flex; justify-content:space-between; align-items:center; color:white;">
+        <h2 style="margin:0; color:#38bdf8;">🚗 DriveGo</h2>
+
+        <div>
+            <a href="#home" style="color:white; text-decoration:none; margin:0 15px;">Home</a>
+            <a href="#cars" style="color:white; text-decoration:none; margin:0 15px;">Cars</a>
+            <a href="#booking" style="color:white; text-decoration:none; margin:0 15px;">Book Now</a>
+        </div>
+    </nav>
+
+    <!-- HERO -->
+    <section id="home" style="background:linear-gradient(135deg,#0f172a,#1e3a8a); color:white; padding:90px 7%; text-align:center;">
+
+        <h1 style="font-size:48px; margin-bottom:15px;">
+            Rent Your Dream Car
+        </h1>
+
+        <p style="font-size:19px; color:#dbeafe;">
+            Comfortable. Affordable. Reliable.
+        </p>
+
+        <button onclick="scrollToBooking()"
+            style="margin-top:20px; padding:14px 30px; border:none; border-radius:8px; background:#38bdf8; color:#082f49; font-size:16px; font-weight:bold; cursor:pointer;">
+            Book a Car
+        </button>
+    </section>
+
+    <!-- SEARCH -->
+    <section style="background:white; padding:25px; margin:30px 7%; border-radius:12px; box-shadow:0 4px 15px rgba(0,0,0,.08);">
+
+        <h2 style="margin-top:0;">Find Your Car</h2>
+
+        <select id="category"
+            onchange="filterCars()"
+            style="padding:12px; width:220px; border:1px solid #ccc; border-radius:6px;">
+
+            <option value="all">All Cars</option>
+            <option value="sedan">Sedan</option>
+            <option value="suv">SUV</option>
+            <option value="luxury">Luxury</option>
+
+        </select>
+    </section>
+
+    <!-- CARS -->
+    <section id="cars" style="padding:20px 7%;">
+
+        <h2 style="text-align:center; font-size:32px;">Available Cars</h2>
+
+        <div id="carContainer"
+            style="display:grid; grid-template-columns:repeat(auto-fit,minmax(260px,1fr)); gap:25px; margin-top:30px;">
+
+            <!-- CAR 1 -->
+            <div class="car-card" data-category="sedan"
+                style="background:white; border-radius:12px; overflow:hidden; box-shadow:0 4px 15px rgba(0,0,0,.1);">
+
+                <img src="https://images.unsplash.com/photo-1555215695-3004980ad54e?auto=format&fit=crop&w=800&q=80"
+                    style="width:100%; height:190px; object-fit:cover;">
+
+                <div style="padding:20px;">
+                    <h3>BMW 3 Series</h3>
+                    <p>Automatic • 5 Seats • Petrol</p>
+
+                    <h3 style="color:#2563eb;">₹4,500 / day</h3>
+
+                    <button onclick="selectCar('BMW 3 Series',4500)"
+                        style="width:100%; padding:12px; border:none; border-radius:7px; background:#2563eb; color:white; cursor:pointer;">
+                        Rent Now
+                    </button>
+                </div>
+            </div>
+
+            <!-- CAR 2 -->
+            <div class="car-card" data-category="suv"
+                style="background:white; border-radius:12px; overflow:hidden; box-shadow:0 4px 15px rgba(0,0,0,.1);">
+
+                <img src="https://images.unsplash.com/photo-1606664515524-ed2f786a0bd6?auto=format&fit=crop&w=800&q=80"
+                    style="width:100%; height:190px; object-fit:cover;">
+
+                <div style="padding:20px;">
+                    <h3>Range Rover</h3>
+                    <p>Automatic • 5 Seats • Diesel</p>
+
+                    <h3 style="color:#2563eb;">₹8,000 / day</h3>
+
+                    <button onclick="selectCar('Range Rover',8000)"
+                        style="width:100%; padding:12px; border:none; border-radius:7px; background:#2563eb; color:white; cursor:pointer;">
+                        Rent Now
+                    </button>
+                </div>
+            </div>
+
+            <!-- CAR 3 -->
+            <div class="car-card" data-category="luxury"
+                style="background:white; border-radius:12px; overflow:hidden; box-shadow:0 4px 15px rgba(0,0,0,.1);">
+
+                <img src="https://images.unsplash.com/photo-1618843479313-40f8afb4b4d8?auto=format&fit=crop&w=800&q=80"
+                    style="width:100%; height:190px; object-fit:cover;">
+
+                <div style="padding:20px;">
+                    <h3>Mercedes-Benz</h3>
+                    <p>Automatic • 5 Seats • Petrol</p>
+
+                    <h3 style="color:#2563eb;">₹7,500 / day</h3>
+
+                    <button onclick="selectCar('Mercedes-Benz',7500)"
+                        style="width:100%; padding:12px; border:none; border-radius:7px; background:#2563eb; color:white; cursor:pointer;">
+                        Rent Now
+                    </button>
+                </div>
+            </div>
+
+            <!-- CAR 4 -->
+            <div class="car-card" data-category="sedan"
+                style="background:white; border-radius:12px; overflow:hidden; box-shadow:0 4px 15px rgba(0,0,0,.1);">
+
+                <img src="https://images.unsplash.com/photo-1549924231-f129b911e442?auto=format&fit=crop&w=800&q=80"
+                    style="width:100%; height:190px; object-fit:cover;">
+
+                <div style="padding:20px;">
+                    <h3>Hyundai Verna</h3>
+                    <p>Automatic • 5 Seats • Petrol</p>
+
+                    <h3 style="color:#2563eb;">₹2,500 / day</h3>
+
+                    <button onclick="selectCar('Hyundai Verna',2500)"
+                        style="width:100%; padding:12px; border:none; border-radius:7px; background:#2563eb; color:white; cursor:pointer;">
+                        Rent Now
+                    </button>
+                </div>
+            </div>
+
+        </div>
+    </section>
+
+    <!-- BOOKING -->
+    <section id="booking"
+        style="background:#111827; color:white; padding:50px 7%; margin-top:50px;">
+
+        <h2 style="text-align:center; font-size:32px;">Book Your Car</h2>
+
+        <div style="max-width:600px; margin:30px auto; background:white; color:#222; padding:30px; border-radius:12px;">
+
+            <label>Selected Car</label>
+
+            <input id="selectedCar"
+                type="text"
+                readonly
+                placeholder="Select a car"
+                style="width:100%; padding:12px; margin:8px 0 18px; box-sizing:border-box;">
+
+            <label>Pickup Date</label>
+
+            <input id="pickupDate"
+                type="date"
+                style="width:100%; padding:12px; margin:8px 0 18px; box-sizing:border-box;">
+
+            <label>Number of Days</label>
+
+            <input id="days"
+                type="number"
+                min="1"
+                value="1"
+                onchange="calculatePrice()"
+                style="width:100%; padding:12px; margin:8px 0 18px; box-sizing:border-box;">
+
+            <label>Your Name</label>
+
+            <input id="name"
+                type="text"
+                placeholder="Enter your name"
+                style="width:100%; padding:12px; margin:8px 0 18px; box-sizing:border-box;">
+
+            <label>Phone Number</label>
+
+            <input id="phone"
+                type="tel"
+                placeholder="Enter phone number"
+                style="width:100%; padding:12px; margin:8px 0 18px; box-sizing:border-box;">
+
+            <h3 id="totalPrice">Total: ₹0</h3>
+
+            <button onclick="confirmBooking()"
+                style="width:100%; padding:14px; border:none; border-radius:7px; background:#2563eb; color:white; font-size:16px; cursor:pointer;">
+                Confirm Booking
+            </button>
+
+            <p id="message" style="text-align:center; font-weight:bold;"></p>
+
+        </div>
+    </section>
+
+    <!-- FOOTER -->
+    <footer style="background:#020617; color:#94a3b8; text-align:center; padding:25px;">
+        <p>© 2026 DriveGo Car Rentals | All Rights Reserved</p>
+    </footer>
+
+
+<script>
+
+    let selectedPrice = 0;
+
+    // Select car
+    function selectCar(car, price) {
+
+        document.getElementById("selectedCar").value = car;
+
+        selectedPrice = price;
+
+        calculatePrice();
+
+        document.getElementById("booking").scrollIntoView({
+            behavior: "smooth"
+        });
+    }
+
+
+    // Calculate total rental price
+    function calculatePrice() {
+
+        let days = document.getElementById("days").value;
+
+        let total = selectedPrice * days;
+
+        document.getElementById("totalPrice").innerText =
+            "Total: ₹" + total.toLocaleString("en-IN");
+    }
+
+
+    // Filter cars
+    function filterCars() {
+
+        let category = document.getElementById("category").value;
+
+        let cars = document.querySelectorAll(".car-card");
+
+        cars.forEach(function(car) {
+
+            if(category === "all" ||
+               car.getAttribute("data-category") === category) {
+
+                car.style.display = "block";
+
+            } else {
+
+                car.style.display = "none";
+            }
+
+        });
+    }
+
+
+    // Scroll to booking
+    function scrollToBooking() {
+
+        document.getElementById("booking").scrollIntoView({
+            behavior: "smooth"
+        });
+    }
+
+
+    // Confirm booking
+    function confirmBooking() {
+
+        let car = document.getElementById("selectedCar").value;
+        let name = document.getElementById("name").value;
+        let phone = document.getElementById("phone").value;
+
+        if(car === "") {
+
+            alert("Please select a car first.");
+            return;
+        }
+
+        if(name === "" || phone === "") {
+
+            alert("Please enter your name and phone number.");
+            return;
+        }
+
+        document.getElementById("message").innerText =
+            "✅ Booking request submitted successfully!";
+
+    }
+
+</script>
+
+</body>
+</html>
